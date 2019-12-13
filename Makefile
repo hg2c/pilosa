@@ -1,4 +1,15 @@
-.PHONY: docker
+GROUP ?= hg2c
+IMAGE = pilosa
+TAG ?= latest
 
-docker:
-	docker build . -t hg2c/pilosa:latest
+.PHONY: build
+build:
+	docker build . -t $(GROUP)/$(IMAGE):$(TAG)
+
+.PHONY: push
+push:
+	docker push $(GROUP)/$(IMAGE):$(TAG)
+
+.PHONY: test
+test:
+	docker run --rm -it $(GROUP)/$(IMAGE):$(TAG)
