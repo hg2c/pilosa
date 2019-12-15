@@ -21,7 +21,7 @@ RUN cd ssb-dbgen && make
 
 FROM pilosa/pilosa:latest
 
-ENV PATH="/:${PATH}"
+ENV PATH="/opt/pilosa:/:${PATH}"
 
 COPY --from=go /go/bin/pdk /pdk
 COPY --from=go /go/bin/pilosa-console /pilosa-console
@@ -31,7 +31,8 @@ COPY --from=go /go/src/github.com/pilosa/pdk /opt/pdk
 COPY --from=alpine /ssb-dbgen/dbgen /opt/ssb-dbgen/dbgen
 COPY --from=alpine /ssb-dbgen/dists.dss /opt/ssb-dbgen/dists.dss
 
-WORKDIR /opt/pdk
+# COPY pilosa /opt/pilosa
+WORKDIR /opt/pilosa
 
 ENTRYPOINT []
 CMD ["sh"]

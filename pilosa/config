@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+default_endpoint=localhost:10101
+
+config_get_default() {
+    local key="default_$1"
+    eval "echo \${$key}"
+}
+
+config_set() {
+    echo "$1=$2" > .env
+    echo "set $1=$2 done."
+}
+
+key=$1
+
+if [ $# = 1 ]; then
+    eval "echo \${$key}"
+else
+    defaults=$(config_get_default $key)
+    value=${2:-$defaults}
+    config_set $key $value
+fi
