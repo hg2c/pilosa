@@ -1,0 +1,47 @@
+# Which repositories did user 14 star:
+Row(stargazer=14)
+
+# What are the top 5 languages in the sample data:
+TopN(language, n=5)
+
+# Which repositories were starred by user 14 and 19:
+Intersect(
+    Row(stargazer=14),
+    Row(stargazer=19)
+)
+
+# Which repositories were starred by user 14 or 19:
+Union(
+    Row(stargazer=14),
+    Row(stargazer=19)
+)
+
+# Which repositories were starred by user 14 and 19 and also were written in language 1:
+Intersect(
+    Row(stargazer=14),
+    Row(stargazer=19),
+    Row(language=1)
+)
+
+
+
+
+
+
+
+
+
+Row(stargazer=3)
+{"results":[{"attrs":{},"columns":[426]}]}
+
+Shift(Row(stargazer=3), n=2)
+{"results":[{"attrs":{},"columns":[428]}]}
+
+Intersect(
+            Row(stargazer=14),
+            Row(stargazer=19),
+            Row(language=1)
+        )
+
+# TopN(stargazer, n=2, attrName=active, attrValues=[true])
+# {"error":"executing: finding top results: cannot compute TopN(), field has no cache: \"stargazer\""}

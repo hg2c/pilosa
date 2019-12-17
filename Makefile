@@ -12,11 +12,30 @@ push:
 
 .PHONY: test
 test:
-	docker run --name pilosa --rm -it -v $(CURDIR)/data:/data $(GROUP)/$(IMAGE):$(TAG)
+	docker run --rm -it -v $(CURDIR)/data:/data $(GROUP)/$(IMAGE):$(TAG) sh
 
 .PHONY: start
 start:
-	docker run --rm --name pilosa \
-		-p 10101:10101 -p 8000 \
-		-v $(CURDIR)/pilosa:/opt/pilosa \
-		hg2c/pilosa pilosa server
+	docker run -d \
+		--name=pilosa --cpus=6 --memory=8g \
+		-p 10101:10101 -p 8000:8000 -p 8080:8080 \
+		-v $(CURDIR)/data:/data \
+		-v $(CURDIR)/playground:/playground \
+		hg2c/pilosa pilosa server -c config.toml
+
+.PHONY: stop
+stop:
+	docker rm -f pilosa
+
+.PHONY: sh
+sh:
+	docker exec -it pilosa sh
+
+.PHONY: console
+console:
+	docker exec -d pilosa /playground/web
+
+.PHONY: info
+info:
+	curl -s localhost:10101/schema | jq
+	curl -s localhost:10101/status | jq

@@ -18,21 +18,26 @@ FROM hg2c/alpine:latest as alpine
 RUN git clone https://github.com/greenlion/ssb-dbgen.git
 RUN cd ssb-dbgen && make
 
+FROM pilosa/pilosa:latest as pilosa
 
-FROM pilosa/pilosa:latest
+FROM alpine:latest
 
-ENV PATH="/opt/pilosa:/:${PATH}"
+RUN apk add --no-cache curl jq
 
-COPY --from=go /go/bin/pdk /pdk
-COPY --from=go /go/bin/pilosa-console /pilosa-console
-COPY --from=go /go/src/github.com/pilosa/demo-ssb/main /demo-ssb
-COPY --from=go /go/src/github.com/pilosa/pdk /opt/pdk
+ENV PILOSA_HOME="/opt/pilosa"
+ENV PATH="${PILOSA_HOME}:${PATH}"
 
-COPY --from=alpine /ssb-dbgen/dbgen /opt/ssb-dbgen/dbgen
-COPY --from=alpine /ssb-dbgen/dists.dss /opt/ssb-dbgen/dists.dss
+COPY --from=go /go/bin/pdk ${PILOSA_HOME}/pdk
+COPY --from=go /go/bin/pilosa-console ${PILOSA_HOME}/pilosa-console
+COPY --from=go /go/src/github.com/pilosa/demo-ssb/main ${PILOSA_HOME}/demo-ssb
 
-# COPY pilosa /opt/pilosa
-WORKDIR /opt/pilosa
+COPY --from=alpine /ssb-dbgen/dbgen ${PILOSA_HOME}/dbgen
+COPY --from=alpine /ssb-dbgen/dists.dss ${PILOSA_HOME}/dists.dss
 
-ENTRYPOINT []
+COPY --from=pilosa /pilosa ${PILOSA_HOME}/pilosa
+
+# COPY playground /playground
+WORKDIR /playground
+
+VOLUME /data
 CMD ["sh"]

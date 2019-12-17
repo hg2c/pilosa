@@ -1,0 +1,210 @@
+{
+  "name": "taxi",
+  "options": {
+    "keys": false,
+    "trackExistence": false
+  },
+  "fields": [
+    {
+      "name": "cab_type",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10,
+        "keys": false
+      }
+    },
+    {
+      "name": "cost_cents",
+      "options": {
+        "type": "int",
+        "base": 0,
+        "bitDepth": 16,
+        "min": 0,
+        "max": 524000,
+        "keys": false
+      }
+    },
+    {
+      "name": "dist_miles",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 1000,
+        "keys": false
+      }
+    },
+    {
+      "name": "drop_day",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10000,
+        "keys": false
+      }
+    },
+    {
+      "name": "drop_elevation",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10000,
+        "keys": false
+      }
+    },
+    {
+      "name": "drop_grid_id",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10000,
+        "keys": false
+      }
+    },
+    {
+      "name": "drop_mday",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10000,
+        "keys": false
+      }
+    },
+    {
+      "name": "drop_month",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 13,
+        "keys": false
+      }
+    },
+    {
+      "name": "drop_time",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10000,
+        "keys": false
+      }
+    },
+    {
+      "name": "drop_year",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 1000,
+        "keys": false
+      }
+    },
+    {
+      "name": "duration_minutes",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10000,
+        "keys": false
+      }
+    },
+    {
+      "name": "passenger_count",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 1000,
+        "keys": false
+      }
+    },
+    {
+      "name": "pickup_day",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10000,
+        "keys": false
+      }
+    },
+    {
+      "name": "pickup_elevation",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10000,
+        "keys": false
+      }
+    },
+    {
+      "name": "pickup_grid_id",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10000,
+        "keys": false
+      }
+    },
+    {
+      "name": "pickup_mday",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10000,
+        "keys": false
+      }
+    },
+    {
+      "name": "pickup_month",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 13,
+        "keys": false
+      }
+    },
+    {
+      "name": "pickup_time",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10000,
+        "keys": false
+      }
+    },
+    {
+      "name": "pickup_year",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 100,
+        "keys": false
+      }
+    },
+    {
+      "name": "speed_mph",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10000,
+        "keys": false
+      }
+    },
+    {
+      "name": "total_amount_dollars",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10000,
+        "keys": false
+      }
+    },
+    {
+      "name": "user_id",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 100000,
+        "keys": false
+      }
+    }
+  ],
+  "shardWidth": 1048576
+}
