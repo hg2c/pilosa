@@ -25,7 +25,7 @@ FROM alpine:latest
 RUN apk add --no-cache curl jq
 
 ENV PILOSA_HOME="/opt/pilosa"
-ENV PATH="${PILOSA_HOME}:${PATH}"
+ENV PATH="${PILOSA_HOME}:${PATH}:/playground"
 
 COPY --from=go /go/bin/pdk ${PILOSA_HOME}/pdk
 COPY --from=go /go/bin/pilosa-console ${PILOSA_HOME}/pilosa-console
@@ -36,7 +36,7 @@ COPY --from=alpine /ssb-dbgen/dists.dss ${PILOSA_HOME}/dists.dss
 
 COPY --from=pilosa /pilosa ${PILOSA_HOME}/pilosa
 
-# COPY playground /playground
+COPY playground /playground
 WORKDIR /playground
 
 VOLUME /data
