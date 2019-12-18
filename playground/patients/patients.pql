@@ -1,3 +1,4 @@
+#-*-mode: sh;-*-
 # find all patients over the age of 40
 Row(age > 40)
 
