@@ -1,3 +1,4 @@
+#-*-mode: sh;-*-
 # Count per cab type can be retrieved, sorted, with a single PQL call.
 TopN(cab_type)
 

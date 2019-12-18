@@ -1,3 +1,4 @@
+#-*-mode: sh;-*-
 # Which repositories did user 14 star:
 Row(stargazer=14)
 

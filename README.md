@@ -1,40 +1,70 @@
 # Pilosa
 
-## 启动
+## Prepare
 
+### local pilosa
 ```bash
-docker run -d \
-    --name=pilosa --cpus=6 --memory=8g \
-    -p 10101:10101 -p 8000:8000 -p 8080:8080 \
-    -v $(CURDIR)/data:/data \
-    -v $(CURDIR)/playground:/playground \
-    hg2c/pilosa pilosa server -c config.toml
-
-# 或:
-pilosa server -c config.toml
+make start
 ```
 
-## 使用
+### cluster
+```bash
+./start-pilosa-cluster.sh
+./delete-pilosa-cluster.sh
+```
 
-### Taxi
+### pilosa console
 
 ```bash
-docker exec pilosa pdk.sh taxi
+docker exec -d pilosa ./console.sh
+```
 
+## Pilosa Playground
+
+```bash
+# enter pilosa playground
+docker exec -it pilosa sh
+
+# config pilosa endpoint
+./config endpoint localhost:10101
+```
+
+### patients
+
+```bash
+# create index patients and fields
+./patients/create.sh
+
+# import patients data
+./patients/import.sh
+
+# play
+./patients/query.sh
+```
+
+### repository
+
+```bash
+# create index repository and fields
+./repository/create.sh
+
+# import repository data
+./repository/import.sh
+
+# play
+./repository/query.sh
+```
+
+### taxi
+
+```bash
+# create index taxi and fields
+./taxi/create.sh
+
+# import taxi data
 # https://www.pilosa.com/docs/latest/examples/
-# import all taxi data
-docker exec pilosa pdk.sh taxi-big
-```
+./taxi/import.sh
 
-### SSB
-
-```bash
-# Generating SSB data
-dbgen -vf -T a
-
-# Import data into Pilosa.
-pdk ssb -d .
-
-# Run demo-ssb
-demo-ssb -i ssb
+# play
+./taxi/query.sh
 ```
