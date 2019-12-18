@@ -1,0 +1,24 @@
+#-*-mode: sh;-*-
+# find all patients over the age of 40
+Row(age > 40)
+
+# To find the average age of all patients
+Sum(field="age")
+
+# You can also provide a filter to the Sum() function to find the
+# average age of all patients over 40.
+Sum(Row(age > 40), field="age")
+
+# To find the minimum age of all patients
+Min(field="age")
+
+# You can also provide a filter to the Min() function to find the minimum
+# age of all patients over 40.
+Min(Row(age > 40), field="age")
+
+# To find the maximum age of all patients
+Max(field="age")
+
+# You can also provide a filter to the Max() function to find the maximum
+# age of all patients under 40.
+Max(Row(age < 40), field="age")

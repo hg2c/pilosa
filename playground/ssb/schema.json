@@ -1,0 +1,213 @@
+{
+  "name": "ssb",
+  "options": {
+    "keys": false,
+    "trackExistence": true
+  },
+  "fields": [
+    {
+      "name": "c_city",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 500,
+        "keys": false
+      }
+    },
+    {
+      "name": "c_nation",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 30,
+        "keys": false
+      }
+    },
+    {
+      "name": "c_region",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10,
+        "keys": false
+      }
+    },
+    {
+      "name": "lo_discount",
+      "options": {
+        "type": "int",
+        "base": 0,
+        "bitDepth": 4,
+        "min": 0,
+        "max": 15,
+        "keys": false
+      }
+    },
+    {
+      "name": "lo_discount_b",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 20,
+        "keys": false
+      }
+    },
+    {
+      "name": "lo_extendedprice",
+      "options": {
+        "type": "int",
+        "base": 0,
+        "bitDepth": 16,
+        "min": 0,
+        "max": 65535,
+        "keys": false
+      }
+    },
+    {
+      "name": "lo_month",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 12,
+        "keys": false
+      }
+    },
+    {
+      "name": "lo_profit",
+      "options": {
+        "type": "int",
+        "base": 0,
+        "bitDepth": 32,
+        "min": 0,
+        "max": 134217727,
+        "keys": false
+      }
+    },
+    {
+      "name": "lo_quantity",
+      "options": {
+        "type": "int",
+        "base": 0,
+        "bitDepth": 6,
+        "min": 0,
+        "max": 63,
+        "keys": false
+      }
+    },
+    {
+      "name": "lo_quantity_b",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 65,
+        "keys": false
+      }
+    },
+    {
+      "name": "lo_revenue",
+      "options": {
+        "type": "int",
+        "base": 0,
+        "bitDepth": 27,
+        "min": 0,
+        "max": 134217727,
+        "keys": false
+      }
+    },
+    {
+      "name": "lo_revenue_computed",
+      "options": {
+        "type": "int",
+        "base": 0,
+        "bitDepth": 16,
+        "min": 0,
+        "max": 65535,
+        "keys": false
+      }
+    },
+    {
+      "name": "lo_supplycost",
+      "options": {
+        "type": "int",
+        "base": 0,
+        "bitDepth": 17,
+        "min": 0,
+        "max": 131071,
+        "keys": false
+      }
+    },
+    {
+      "name": "lo_weeknum",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 52,
+        "keys": false
+      }
+    },
+    {
+      "name": "lo_year",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10,
+        "keys": false
+      }
+    },
+    {
+      "name": "p_brand1",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 2000,
+        "keys": false
+      }
+    },
+    {
+      "name": "p_category",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 50,
+        "keys": false
+      }
+    },
+    {
+      "name": "p_mfgr",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 20,
+        "keys": false
+      }
+    },
+    {
+      "name": "s_city",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 500,
+        "keys": false
+      }
+    },
+    {
+      "name": "s_nation",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 30,
+        "keys": false
+      }
+    },
+    {
+      "name": "s_region",
+      "options": {
+        "type": "set",
+        "cacheType": "ranked",
+        "cacheSize": 10,
+        "keys": false
+      }
+    }
+  ],
+  "shardWidth": 1048576
+}
