@@ -33,7 +33,7 @@ sh:
 
 .PHONY: console
 console:
-	docker exec -d pilosa /playground/web
+	docker exec -d pilosa /playground/console.sh
 
 .PHONY: info
 info:
