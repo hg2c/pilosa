@@ -5,7 +5,7 @@ PDK_HOME := $(GOPATH)/src/github.com/pilosa/pdk
 
 .PHONY: build
 build:
-	docker build . -t $(GROUP)/$(IMAGE):$(TAG)
+	docker build -t $(GROUP)/$(IMAGE):$(TAG) --build-arg PDK_VERSION=v0.8.0-import.5 .
 
 .PHONY: push
 push:
@@ -25,7 +25,7 @@ test:
 
 .PHONY: test-devel
 test-devel:
-	TAG=devel make test
+	docker run --rm -it -v $(CURDIR)/data:/data -v $(PDK_HOME):/app $(GROUP)/$(IMAGE):devel sh
 
 .PHONY: start
 start:
