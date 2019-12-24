@@ -14,10 +14,10 @@ push:
 .PHONY: devel
 devel:
 	cd $(PDK_HOME) && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 make crossbuild
-	cp $(PDK_HOME)/build/pdk-v0.8.0-devel-linux-amd64/pdk ./pdk-devel
+	cp $(PDK_HOME)/build/pdk-v0.8.0-devel-linux-amd64/pdk ./pdk
 	docker build . -t $(GROUP)/$(IMAGE):devel -f Dockerfile.devel
 	docker push $(GROUP)/$(IMAGE):devel
-	rm ./pdk-devel
+	rm ./pdk
 
 .PHONY: test
 test:

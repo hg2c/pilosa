@@ -10,7 +10,7 @@ ENV PILOSA_HOME="/opt/pilosa"
 ENV PATH="${PILOSA_HOME}:${PATH}:/playground"
 
 COPY --from=pilosa ${PILOSA_HOME} ${PILOSA_HOME}
-COPY ./pdk-devel ${PILOSA_HOME}/pdk-devel
+COPY ./pdk ${PILOSA_HOME}/pdk
 
 COPY playground /playground
 WORKDIR /playground
