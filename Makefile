@@ -1,6 +1,7 @@
 GROUP ?= hg2c
 IMAGE = pilosa
 TAG ?= latest
+PDK_HOME := $(GOPATH)/src/github.com/pilosa/pdk
 
 .PHONY: build
 build:
@@ -10,9 +11,21 @@ build:
 push:
 	docker push $(GROUP)/$(IMAGE):$(TAG)
 
+.PHONY: devel
+devel:
+	cd $(PDK_HOME) && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 make crossbuild
+	cp $(PDK_HOME)/build/pdk-v0.8.0-devel-linux-amd64/pdk ./pdk-devel
+	docker build . -t $(GROUP)/$(IMAGE):devel -f Dockerfile.devel
+	docker push $(GROUP)/$(IMAGE):devel
+	rm ./pdk-devel
+
 .PHONY: test
 test:
 	docker run --rm -it -v $(CURDIR)/data:/data $(GROUP)/$(IMAGE):$(TAG) sh
+
+.PHONY: test-devel
+test-devel:
+	TAG=devel make test
 
 .PHONY: start
 start:

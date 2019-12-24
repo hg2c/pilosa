@@ -1,3 +1,5 @@
+ARG PDK_VERSION=v0.8.0-devel.1
+
 FROM golang:1.13.0 as go
 RUN go get -u github.com/golang/dep/cmd/dep
 
@@ -10,8 +12,7 @@ RUN git clone https://github.com/lotreal/demo-ssb.git ${PILOSA_HOME}/demo-ssb
 RUN cd ${PILOSA_HOME}/demo-ssb && dep ensure && CGO_ENABLED=0 go build *.go
 
 RUN git clone https://github.com/lotreal/pdk.git ${PILOSA_HOME}/pdk
-RUN cd ${PILOSA_HOME}/pdk && CGO_ENABLED=0 make install FLAGS="-a"
-
+RUN cd ${PILOSA_HOME}/pdk && CGO_ENABLED=0 VERSION=${PDK_VERSION} make install FLAGS="-a"
 
 FROM hg2c/alpine:latest as alpine
 
@@ -19,6 +20,8 @@ RUN git clone https://github.com/greenlion/ssb-dbgen.git
 RUN cd ssb-dbgen && make
 
 FROM pilosa/pilosa:latest as pilosa
+
+
 
 FROM alpine:latest
 
